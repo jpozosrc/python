@@ -1,8 +1,16 @@
+# ---------------------------------------------------------
+# Sends a temporary signal to a GPIO pin in a Raspberry Pi
+# ---------------------------------------------------------
 import RPi.GPIO as GPIO
 import time
 
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(7, GPIO.OUT)
-GPIO.output(7, True)
-time.sleep(0.2)
-GPIO.output(7, False)
+pin = 7                    # Raspberry Pi's pin 7
+delay = 0.25               # Delay in seconds
+
+# Init GPIO
+GPIO.setmode(GPIO.BOARD)    
+GPIO.setup(pin, GPIO.OUT)
+
+GPIO.output(pin, 1)        # Set pin to high
+time.sleep(delay)          # Wait some milliseconds
+GPIO.output(pin, 0)        # Set pin to low
